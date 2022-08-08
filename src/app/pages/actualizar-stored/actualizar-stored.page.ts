@@ -12,14 +12,17 @@ export class ActualizarStoredPage implements OnInit {
   @Input() task;
 
   newTaskObj = {}
-  nombre
+  texto
 
 
 
-  constructor(public modalCtrl:ModalController, public alertController: AlertController, public dataService: DataService){}
+  constructor(
+    public modalCtrl:ModalController, 
+    public alertController: AlertController, 
+    public dataService: DataService){}
   
   ngOnInit(){
-    this.nombre = this.task.value.nombre
+    this.texto = this.task.value.texto
   }
 
   async dismis(){
@@ -27,9 +30,10 @@ export class ActualizarStoredPage implements OnInit {
   }
 
   async update(){
-    this.newTaskObj = ({nombre:this.nombre})
+    this.newTaskObj = ({texto:this.texto})
     let uid = this.task.key
     await this.dataService.updateTask(uid,this.newTaskObj)
     this.dismis()
   }
+
 }

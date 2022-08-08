@@ -10,17 +10,20 @@ import { DataService } from 'src/app/service/data.service';
 export class RegistroStoredPage implements OnInit {
 
   newTaskObj = {}
-  nombre
+  texto
 
 
-  constructor(public modalCtrl:ModalController, public alertController: AlertController, public dataService: DataService){}
+  constructor(
+    public modalCtrl:ModalController, 
+    public alertController: AlertController,
+    public dataService: DataService){}
   
   ngOnInit(){
   }
 
   async add(){
-    this.newTaskObj = ({nombre:this.nombre})
-    let uid = this.nombre
+    this.newTaskObj = ({texto:this.texto})
+    let uid = this.texto
 
     if(uid){
       await this.dataService.addTask(uid,this.newTaskObj)
@@ -32,78 +35,6 @@ export class RegistroStoredPage implements OnInit {
 
   async dismis(){
     await this.modalCtrl.dismiss(this.newTaskObj)
-  }
-
-  //ALERTAS 
-
-  async mensaje() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'ESPERA!',
-      message: 'Ingresa el NOMBRE porfavor',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje2() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'ESPERA!',
-      message: 'Ingresa el precio porfavor',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje3() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'ESPERA!',
-      message: 'Ingresa la descripcion porfavor',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje4() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'GENIAL!',
-      message: 'Guardado Correctamente',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje5() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'GENIAL!',
-      message: 'Modificado Correctamente',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
   }
 
   async mensaje6() {
@@ -119,5 +50,4 @@ export class RegistroStoredPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     //console.log('onDidDismiss resolved with role', role);
   }
-
 }

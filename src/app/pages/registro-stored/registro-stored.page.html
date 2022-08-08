@@ -1,28 +1,26 @@
 <ion-header>
   <ion-toolbar>
 
-      <ion-buttons slot="end">
-          <ion-button (click)="dismis()" fill="clear">
-              <ion-icon slot="icon-only" name="close-sharp" class="delete"></ion-icon>
-          </ion-button>
-      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismis()" fill="clear">
+        <ion-icon slot="icon-only" name="close-sharp" class="delete"></ion-icon>
+      </ion-button>
+    </ion-buttons>
 
-      <ion-title color="danger">Comentarios</ion-title>
+    <ion-title >Comentarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
+  <form>
+    <ion-toolbar>
+      <ion-input type="text" placeholder="Escribe un comentario" name="texto" [(ngModel)]="texto"></ion-input>
+      <ion-buttons slot="end">
+        <ion-button (click)="add()">
+          <ion-icon color="primary" slot="start" name="send"></ion-icon>
+        </ion-button>
 
-  <ion-toolbar>
-    <ion-input type="text" id="txtnombre" name="txtnombre" [(ngModel)]="nombre" placeholder="Escribe un comentario" ></ion-input>
-    <ion-buttons slot="end">
-      <ion-button (click)="add()">
-        <ion-icon color="primary" slot="start" name="send"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon name='camera-outline' class="icon"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-
+      </ion-buttons>
+    </ion-toolbar>
+  </form>
 </ion-content>

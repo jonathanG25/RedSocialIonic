@@ -11,6 +11,8 @@ export class Tab1Page {
 
   @ViewChild(IonList) ionlist: IonList;
 
+  favorito:boolean = false;
+
   public comentarios : any =[
     {
       id:1,
@@ -26,9 +28,12 @@ export class Tab1Page {
   ngOnInit() {
   }
 
+  like(){
+    this.favorito = !this.favorito;
+  }
+  
   eliminar(indice){
     this.Drop(indice);
-    this.ionlist.closeSlidingItems();
   }
   async AbrirModal(c){
     this.ionlist.closeSlidingItems();

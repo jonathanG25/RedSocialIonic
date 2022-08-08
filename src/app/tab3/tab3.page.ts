@@ -20,8 +20,15 @@ export class Tab3Page {
   
   private path = 'Comentario/';
 
+  favorito:boolean = false;
+
   constructor(public data: ServicesService,  public actionSheetController: ActionSheetController) {this.getMensaje();}
 
+
+  like(){
+    this.favorito = !this.favorito;
+  }
+  
   guardarMensaje(){
     this.data.createDoc(this.newMensaje, this.path, this.newMensaje.id);
     this.newMensaje ={
@@ -40,34 +47,7 @@ export class Tab3Page {
   delete(c: Mensaje){
     this.data.deleteDoc(this.path, c.id);
   }
-  // async presentActionSheet(msj: Mensaje) {
-  //   const actionSheet = await this.actionSheetController.create({
-  //     header: 'opciones',
-  //     cssClass: 'my-custom-class',
-  //     buttons: [{
-  //       text: 'Eliminar',
-  //       role: 'destructive',
-  //       icon: 'trash',
-  //       id: 'delete-button',
-  //       data: {
-  //         type: 'delete'
-  //       },
-  //       handler: () => {
-  //         this.data.deleteDoc(this.path, msj.id)
-  //       }
-  //     }, {
-  //       text: 'modificar',
-  //       icon: 'create-sharp',
-  //       data: 10,
-  //       handler: () => {
-  //         this.newMensaje = msj
-  //       }
-  //     }]
-  //   });
-  //   await actionSheet.present();
-
-  //   const { role, data } = await actionSheet.onDidDismiss();
-  // }
+  
 }
 
 

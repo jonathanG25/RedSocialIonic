@@ -11,7 +11,9 @@ import { DataService } from '../service/data.service';
 })
 export class Tab2Page {
 
-  productos=[]
+  comentarios=[]
+
+  favorito:boolean = false;
 
   constructor(
     public modalCtrl: ModalController,
@@ -31,7 +33,7 @@ export class Tab2Page {
   }
 
   getAllTask(){
-    this.productos = this.dataService.getAllTask()
+    this.comentarios = this.dataService.getAllTask()
   }
 
   eliminar(key){
@@ -49,12 +51,18 @@ export class Tab2Page {
     return await modal.present()
   }
 
- 
+  //dar like - cambiar el color del corazoncito
+  like(){
+    this.favorito = !this.favorito;
+  }
+  
+  //ALERTAS 
+  //inicio
   async mensaje(key) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'ESPERA!',
-      message: '¿Estás seguro de que quieres eliminar la nota?',
+      message: '¿Estás seguro de que quieres eliminar el comentario?',
       buttons: [
         {
           text: 'No',
@@ -94,75 +102,5 @@ export class Tab2Page {
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
-  //form
-  async mensaje3() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'ESPERA!',
-      message: 'Ingresa el NOMBRE porfavor',
-      buttons: ['ACEPTAR']
-    });
 
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje4() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'ESPERA!',
-      message: 'Ingresa el precio porfavor',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje5() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'ESPERA!',
-      message: 'Ingresa la descripcion porfavor',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje6() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'GENIAL!',
-      message: 'Guardado Correctamente',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-  async mensaje7() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'GENIAL!',
-      message: 'Modificado Correctamente',
-      buttons: ['ACEPTAR']
-    });
-
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
 }
-
